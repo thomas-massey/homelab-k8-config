@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: http://gitlab.gitlab.svc.cluster.local/thomasmassey/kubernetes-homelab-config.git
+    repoURL: https://github.com/thomas-massey/homelab-k8-config.git
     targetRevision: HEAD
     path: argo-apps
 
