@@ -50,61 +50,11 @@ metadata:
   name: ingress-nginx
 rules:
 - apiGroups:
-  - ''
+  - '*'
   resources:
-  - configmaps
-  - endpoints
-  - nodes
-  - pods
-  - secrets
-  - services
+  - '*'
   verbs:
-  - list
-  - watch
-- apiGroups:
-  - ''
-  resources:
-  - nodes
-  verbs:
-  - get
-- apiGroups:
-  - ''
-  resources:
-  - services
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
-  - networking.k8s.io
-  resources:
-  - ingresses
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
-  - ''
-  resources:
-  - events
-  verbs:
-  - create
-  - patch
-- apiGroups:
-  - networking.k8s.io
-  resources:
-  - ingresses/status
-  verbs:
-  - update
-  - patch
-- apiGroups:
-  - networking.k8s.io
-  resources:
-  - ingressclasses
-  verbs:
-  - get
-  - list
-  - watch
+  - '*'
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
