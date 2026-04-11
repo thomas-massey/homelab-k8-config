@@ -5,6 +5,7 @@ metadata:
   namespace: nginx
 spec:
   type: ClusterIP
+  clusterIP: 10.96.2.2
   selector:
     app: nginx
   ports:
