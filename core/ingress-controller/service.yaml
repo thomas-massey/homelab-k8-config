@@ -5,6 +5,7 @@ metadata:
   namespace: ingress-nginx
 spec:
   type: LoadBalancer
+  clusterIP: 10.96.1.1
   selector:
     app: ingress-nginx
   ports:

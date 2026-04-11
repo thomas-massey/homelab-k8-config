@@ -5,7 +5,7 @@ metadata:
   namespace: gitlab
 spec:
   type: ClusterIP
-  clusterIP: 10.96.1.1
+  clusterIP: 10.96.2.1
   selector:
     app: gitlab
   ports:
