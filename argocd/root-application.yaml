@@ -1,20 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-controller
+  name: homelab-bootstrap
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/thomas-massey/homelab-k8-config
     targetRevision: main
-    path: core/ingress-controller
+    path: argocd/bootstrap
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress-nginx
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-    - CreateNamespace=true

@@ -1,20 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitlab
+  name: nginx-hello
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
-    repoURL: https://github.com/thomas-massey/homelab-k8-config.git
-    targetRevision: HEAD
-    path: apps/gitlab
+    repoURL: https://github.com/thomas-massey/homelab-k8-config
+    targetRevision: main
+    path: apps/nginx-hello/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitlab
+    namespace: web
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
