@@ -22,7 +22,7 @@ spec:
         env:
         - name: GITLAB_OMNIBUS_CONFIG
           value: |
-            external_url 'https://gitlab.tamlabs.co.uk'
+            external_url 'http://gitlab.tamlabs.co.uk'
             gitlab_rails['gitlab_shell_ssh_port'] = 22
         volumeMounts:
         - mountPath: /var/opt/gitlab
