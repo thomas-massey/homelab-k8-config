@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - platform-root.yaml
+  - amp-app.yaml
   - web-test-app.yaml
   - web-test-2-app.yaml
   - argo-ddns-app.yaml

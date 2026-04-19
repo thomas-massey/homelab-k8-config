@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amp
+  namespace: amp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: amp
+  template:
+    metadata:
+      labels:
+        app: amp
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: amp
+          image: mitchtalmadge/amp-dockerized:latest
+          imagePullPolicy: Always
+          env:
+            - name: UID
+              value: "1000"
+            - name: GID
+              value: "1000"
+            - name: TZ
+              value: Etc/UTC
+            - name: PORT
+              value: "8080"
+            - name: IPBINDING
+              value: 0.0.0.0
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - name: amp-data
+              mountPath: /home/amp
+      volumes:
+        - name: amp-data
+          persistentVolumeClaim:
+            claimName: amp-data

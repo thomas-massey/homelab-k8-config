@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: amp
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/thomas-massey/homelab-k8-config.git
+    targetRevision: HEAD
+    path: apps/amp
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: amp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
