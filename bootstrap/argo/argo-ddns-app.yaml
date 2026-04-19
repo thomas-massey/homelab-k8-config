@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homelab-bootstrap
+  name: cloudflare-ddns
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/thomas-massey/homelab-k8-config
-    targetRevision: main
-    path: argocd/bootstrap
+    repoURL: https://github.com/thomas-massey/homelab-k8-config.git
+    targetRevision: HEAD
+    path: apps/cloudflare-ddns
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: webtest
   syncPolicy:
     automated:
       prune: true

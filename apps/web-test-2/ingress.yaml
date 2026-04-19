@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-test-2
+  namespace: webtest
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - web-test-2.tamlabs.co.uk
+      secretName: web-test-2-tls
+  rules:
+    - host: web-test-2.tamlabs.co.uk
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-service-2
+                port:
+                  number: 80

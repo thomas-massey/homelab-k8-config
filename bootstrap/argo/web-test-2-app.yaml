@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-test-2
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/thomas-massey/homelab-k8-config.git
+    targetRevision: HEAD
+    path: apps/web-test-2
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: webtest
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

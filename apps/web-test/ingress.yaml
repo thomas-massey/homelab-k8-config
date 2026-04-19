@@ -1,23 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx-hello
+  name: web-test
+  namespace: webtest
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-cloudflare
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - nginx.example.com
-      secretName: nginx-hello-tls
+        - web-test.tamlabs.co.uk
+      secretName: web-test-tls
   rules:
-    - host: nginx.example.com
+    - host: web-test.tamlabs.co.uk
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: nginx-hello
+                name: nginx-service
                 port:
                   number: 80
