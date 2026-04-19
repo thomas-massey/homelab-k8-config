@@ -18,8 +18,17 @@ spec:
           nodeSelector:
             ingress-ready: "true"
 
+          tolerations:
+            - key: "ingress"
+              operator: "Equal"
+              value: "true"
+              effect: "NoSchedule"
+
           service:
-            type: LoadBalancer
+            type: NodePort
+
+          ingressClassResource:
+            default: true
 
           admissionWebhooks:
             enabled: true
@@ -34,3 +43,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
