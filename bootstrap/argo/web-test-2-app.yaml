@@ -11,8 +11,10 @@ spec:
     path: apps/web-test-2
   destination:
     server: https://kubernetes.default.svc
-    namespace: webtest
+    namespace: web-test-2
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

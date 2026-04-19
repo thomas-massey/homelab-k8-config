@@ -11,8 +11,10 @@ spec:
     path: apps/cloudflare-ddns
   destination:
     server: https://kubernetes.default.svc
-    namespace: webtest
+    namespace: cloudflare-ddns
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

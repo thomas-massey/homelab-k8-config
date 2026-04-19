@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: web-test-2
-  namespace: webtest
+  namespace: web-test-2
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cloudflare
 spec:

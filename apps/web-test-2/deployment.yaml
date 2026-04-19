@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-web-2
-  namespace: webtest
+  namespace: web-test-2
 spec:
   replicas: 1
   selector:
