@@ -5,6 +5,9 @@ namespace: ingress-nginx
 
 resources:
   - namespace.yaml
+  - serviceaccount.yaml
+  - clusterrole.yaml
+  - clusterrolebinding.yaml
   - deployment.yaml
   - service.yaml
   - service-admission.yaml
