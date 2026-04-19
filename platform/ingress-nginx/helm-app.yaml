@@ -25,13 +25,21 @@ spec:
               effect: "NoSchedule"
 
           service:
-            type: NodePort
+            type: ClusterIP
 
-          ingressClassResource:
-            default: true
+          # 🔥 THIS is what gives you real 80/443 on the node
+          containerPorts:
+            http: 80
+            https: 443
+
+          hostPort:
+            enabled: true
 
           admissionWebhooks:
             enabled: true
+
+          ingressClassResource:
+            default: true
 
   destination:
     server: https://kubernetes.default.svc
