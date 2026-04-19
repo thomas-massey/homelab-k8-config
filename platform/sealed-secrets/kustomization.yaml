@@ -2,5 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - helm-app.yaml
   - namespace-cloudflare-ddns.yaml
   - cloudflare-ddns-token.yaml
